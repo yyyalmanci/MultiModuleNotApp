@@ -1,21 +1,17 @@
 plugins {
-    alias libs.plugins.android.application
+    alias libs.plugins.android.library
     alias libs.plugins.kotlin.plugin
-    alias libs.plugins.kotlin.kapt
 }
 
 android {
-    namespace 'com.y3.multimodulenoteapp'
+    namespace 'com.y3.presentation'
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.y3.multimodulenoteapp"
         minSdk 26
         targetSdk 33
-        versionCode 1
-        versionName "1.0"
-
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
     }
 
     buildTypes {
@@ -25,34 +21,19 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_18
-        targetCompatibility JavaVersion.VERSION_18
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
     kotlinOptions {
-        jvmTarget = '18'
+        jvmTarget = '1.8'
     }
 }
 
 dependencies {
-
     implementation libs.androidx.core
     implementation libs.androidx.appcompat
     implementation libs.com.google.android.material
     testImplementation libs.junit
     androidTestImplementation libs.androidx.test.ext
     androidTestImplementation libs.androidx.test.espresso
-
-    //dependincy injection
-    implementation libs.hilt.android
-    kapt libs.hilt.compiler
-
-
-    implementation project(':data')
-    implementation project(':domain')
-    implementation project(':presentation')
-}
-
-// Allow references to generated code
-kapt {
-    correctErrorTypes true
 }
