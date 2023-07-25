@@ -9,6 +9,7 @@ androidApplicationPlugin = "8.0.2"
 andoidLibraryPlugin = "8.0.2"
 kotlingPlugin = "1.8.20"
 hilt = "2.46.1"
+room = "2.5.2"
 
 [libraries]
 androidx-core = { group = "androidx.core", name = "core-ktx", version.ref = "ktx" }
@@ -17,14 +18,19 @@ com-google-android-material = { group = "com.google.android.material", name = "m
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-test-ext = { group = "androidx.test.ext", name = "junit", version.ref = "ext-junit" }
 androidx-test-espresso = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espresso-core" }
-hilt-compiler = {group = "com.google.dagger",name = "hilt-android-compiler", version.ref = "hilt"}
+hilt-android-compiler = {group = "com.google.dagger",name = "hilt-android-compiler", version.ref = "hilt"}
+hilt-compiler = {group = "com.google.dagger",name = "hilt-compiler", version.ref = "hilt"}
 hilt-android = {group = "com.google.dagger",name = "hilt-android", version.ref = "hilt"}
-
+room-runtime = {group = "androidx.room",name = "room-runtime", version.ref = "room"}
+room-compiler = {group = "androidx.room",name = "room-compiler", version.ref = "room"}
+room-ktx = {group = "androidx.room",name = "room-ktx", version.ref = "room"}
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "androidApplicationPlugin" }
 android-library = { id = "com.android.library", version.ref = "andoidLibraryPlugin" }
 kotlin-plugin = { id = "org.jetbrains.kotlin.android", version.ref = "kotlingPlugin" }
-hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
+hilt = { id = "com.google.dagger.hilt.android",  version.ref = "hilt" }
 kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlingPlugin" }
+kotlin-parcelize = { id = "org.jetbrains.kotlin.plugin.parcelize", version.ref = "kotlingPlugin" }
+
 
