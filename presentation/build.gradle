@@ -1,6 +1,7 @@
 plugins {
     alias libs.plugins.android.library
     alias libs.plugins.kotlin.plugin
+    alias libs.plugins.safe.args
 }
 
 android {
@@ -36,4 +37,7 @@ dependencies {
     testImplementation libs.junit
     androidTestImplementation libs.androidx.test.ext
     androidTestImplementation libs.androidx.test.espresso
+
+    implementation libs.navigation.ktx
+    implementation libs.navigation.fragment
 }
