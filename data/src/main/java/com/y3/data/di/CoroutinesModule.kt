@@ -1,4 +1,4 @@
-package com.y3.data.local.di
+package com.y3.data.di
 
 import dagger.Module
 import dagger.Provides

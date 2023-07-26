@@ -1,4 +1,4 @@
-package com.y3.data.local
+package com.y3.common
 
 sealed class Resource<out T> {
     data class Success<out T>(val data: T) : Resource<T>()

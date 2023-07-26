@@ -1,7 +1,7 @@
-package com.y3.data.local.di
+package com.y3.data.di
 
-import com.y3.data.local.repository.TaskRepository
-import com.y3.data.local.repository.TaskRepositoryImpl
+import com.y3.data.repository.TaskRepository
+import com.y3.data.repository.TaskRepositoryImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
