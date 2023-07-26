@@ -1,4 +1,4 @@
-package com.y3.data.local.di
+package com.y3.data.di
 
 import android.content.Context
 import androidx.room.Room
