@@ -46,4 +46,7 @@ dependencies {
     //dependincy injection
     implementation libs.hilt.android
     kapt libs.hilt.compiler
+
+    //loging
+    implementation libs.timber
 }
