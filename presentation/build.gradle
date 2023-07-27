@@ -2,6 +2,9 @@ plugins {
     alias libs.plugins.android.library
     alias libs.plugins.kotlin.plugin
     alias libs.plugins.safe.args
+    alias libs.plugins.kotlin.kapt
+    alias libs.plugins.hilt
+    alias libs.plugins.kotlin.parcelize
 }
 
 android {
@@ -28,6 +31,10 @@ android {
     kotlinOptions {
         jvmTarget = '18'
     }
+
+    buildFeatures {
+        viewBinding true
+    }
 }
 
 dependencies {
@@ -38,6 +45,17 @@ dependencies {
     androidTestImplementation libs.androidx.test.ext
     androidTestImplementation libs.androidx.test.espresso
 
+    //navigation
     implementation libs.navigation.ktx
     implementation libs.navigation.fragment
+
+    //dependincy injection
+    implementation libs.hilt.android
+    kapt libs.hilt.compiler
+
+    //coroutines
+    implementation libs.coroutines
+
+    implementation project(':domain')
+    implementation project(':common')
 }
