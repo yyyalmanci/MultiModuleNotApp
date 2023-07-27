@@ -2,7 +2,7 @@ package com.y3.data.local.entitiy
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.y3.data.model.TaskDomainModel
+import com.y3.common.EMPTY_STRING
 import java.util.Date
 import java.util.UUID
 
@@ -10,15 +10,11 @@ import java.util.UUID
 data class TaskEntity(
     @PrimaryKey
     val id: String = UUID.randomUUID().toString(),
-    var title: String = "",
-    var description: String = "",
-    var tag: String = "",
-    var imageUrl: String = "",
+    var title: String = EMPTY_STRING,
+    var description: String = EMPTY_STRING,
+    var tag: String = EMPTY_STRING,
+    var imageUrl: String = EMPTY_STRING,
     var updatedAt: Date
-)
-
-fun TaskDomainModel.toTaskEntity() = TaskEntity(
-    id, title, description, tag, imageUrl, updatedAt
 )
 
 const val TABLE_NAME_TASKS = "tasks"

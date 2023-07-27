@@ -3,7 +3,6 @@ plugins {
     alias libs.plugins.kotlin.plugin
     alias libs.plugins.kotlin.kapt
     alias libs.plugins.hilt
-    alias libs.plugins.kotlin.parcelize
 }
 
 android {
@@ -50,7 +49,7 @@ dependencies {
     implementation libs.hilt.android
     kapt libs.hilt.compiler
 
-    api project(':common')
+    implementation project(':common')
 
 }
 
