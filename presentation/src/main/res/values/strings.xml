@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">NoteApp</string>
+    <string name="add_task">Add Task</string>
+    <string name="edit_task">Edit Task</string>
+    <string name="title">Title</string>
+    <string name="description">Description</string>
+    <string name="new_note">New Task</string>
+    <string name="delete">delete</string>
+    <string name="add">add</string>
+    <string name="tasks">Tasks</string>
+    <string name="task_detail">Task Detail</string>
+    <string name="no_task">You do not have any task</string>
+    <string name="empty_fields_warning">description and title shouldn\'t be empty</string>
+    <string name="image_url">Image url</string>
+
+</resources>

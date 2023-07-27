@@ -49,6 +49,9 @@ dependencies {
     implementation libs.hilt.android
     kapt libs.hilt.compiler
 
+    //loging
+    implementation libs.timber
+
     implementation project(':common')
 
 }
