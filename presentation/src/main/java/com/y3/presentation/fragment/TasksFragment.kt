@@ -2,19 +2,23 @@ package com.y3.presentation.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
+import androidx.core.view.MenuHost
+import androidx.core.view.MenuProvider
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
-import com.y3.common.Resource
-import com.y3.domain.model.TaskDomainModel
 import com.y3.presentation.R
 import com.y3.presentation.databinding.FragmentTasksBinding
 import com.y3.presentation.extensions.toast
 import com.y3.presentation.fragment.adapters.TasksAdapter
 import com.y3.presentation.model.TasksUiState
+import com.y3.presentation.model.enums.ActionType
 import com.y3.presentation.viewmodel.TasksViewModel
 import com.yyy.noteapp.extensions.beGone
 import com.yyy.noteapp.extensions.beVisible
@@ -33,16 +37,40 @@ class TasksFragment : BaseBindingFragment<FragmentTasksBinding>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.tasksToolbar.header.text = getString(R.string.tasks)
+        viewModel.loadTask()
         setViewModels()
+        setMenu()
+    }
+
+    private fun setMenu() {
+        binding.tasksToolbar.toolbar.apply {
+            inflateMenu(R.menu.tasks_menu)
+            title = getString(R.string.app_name)
+            menu.getItem(0).setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM)
+            setOnMenuItemClickListener {
+                when (it.itemId) {
+                    R.id.add_task -> {
+                        findNavController().navigate(
+                            TasksFragmentDirections.actionTasksFragmentToAddEditTaskFragment(
+                                action = ActionType.ADD
+                            )
+                        )
+                        true
+                    }
+                    else -> {
+                        false
+                    }
+                }
+            }
+        }
     }
 
     private fun setViewModels() {
         lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 launch {
-                    tasksViewModel.tasks.collect{
-                        when(it){
+                    tasksViewModel.tasks.collect {
+                        when (it) {
                             is TasksUiState.Idle -> {
 
                             }

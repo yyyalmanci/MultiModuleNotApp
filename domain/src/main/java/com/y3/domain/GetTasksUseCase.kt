@@ -22,5 +22,4 @@ class GetTasksUseCase @Inject constructor(
         } catch (t: Throwable) {
             flowOf(Resource.Failure(t))
         }
-
 }

@@ -1,10 +1,10 @@
 plugins {
     alias libs.plugins.android.library
+    alias libs.plugins.hilt
     alias libs.plugins.kotlin.plugin
     alias libs.plugins.safe.args
-    alias libs.plugins.kotlin.kapt
-    alias libs.plugins.hilt
     alias libs.plugins.kotlin.parcelize
+    alias libs.plugins.ksp
 }
 
 android {
@@ -51,7 +51,7 @@ dependencies {
 
     //dependincy injection
     implementation libs.hilt.android
-    kapt libs.hilt.compiler
+    ksp libs.hilt.compiler
 
     //coroutines
     implementation libs.coroutines

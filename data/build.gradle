@@ -1,8 +1,8 @@
 plugins {
     alias libs.plugins.android.library
-    alias libs.plugins.kotlin.plugin
-    alias libs.plugins.kotlin.kapt
     alias libs.plugins.hilt
+    alias libs.plugins.kotlin.plugin
+    alias libs.plugins.ksp
 }
 
 android {
@@ -41,21 +41,17 @@ dependencies {
 
     // Room
     implementation libs.room.runtime
-    kapt libs.room.compiler
+    ksp libs.room.compiler
     annotationProcessor libs.room.compiler
     implementation libs.room.ktx
 
     //dependincy injection
     implementation libs.hilt.android
-    kapt libs.hilt.compiler
+    ksp libs.hilt.compiler
 
     //loging
     implementation libs.timber
 
     implementation project(':common')
 
-}
-
-kapt {
-    correctErrorTypes true
 }

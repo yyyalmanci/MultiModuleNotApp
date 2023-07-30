@@ -7,5 +7,28 @@
     <fragment
         android:id="@+id/tasksFragment"
         android:name="com.y3.presentation.fragment.TasksFragment"
-        android:label="TasksFragment" />
+        android:label="TasksFragment" >
+        <action
+            android:id="@+id/action_tasksFragment_to_addEditTaskFragment"
+            app:destination="@id/addEditTaskFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/addEditTaskFragment"
+        android:name="com.y3.presentation.fragment.AddEditTaskFragment"
+        android:label="AddEditTaskFragment" >
+        <argument
+            android:name="taskModel"
+            app:argType="com.y3.domain.model.TaskDomainModel"
+            app:nullable="true"
+            android:defaultValue="@null" />
+
+             />
+        <action
+            android:id="@+id/action_addEditTaskFragment_to_tasksFragment"
+            app:destination="@id/tasksFragment" />
+        <argument
+            android:name="action"
+            app:argType="com.y3.presentation.model.enums.ActionType" />
+    </fragment>
 </navigation>
