@@ -17,7 +17,6 @@ class GetTaskUseCase @Inject constructor(
             taskRepository.observeTaskById(taskId).map {
                 Resource.Success(it.taskDomainModel())
             }
-
         } catch (t: Throwable) {
             flowOf(Resource.Failure(t))
         }

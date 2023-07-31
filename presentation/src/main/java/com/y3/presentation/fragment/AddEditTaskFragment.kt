@@ -13,6 +13,7 @@ import androidx.navigation.fragment.navArgs
 import com.y3.domain.model.TaskDomainModel
 import com.y3.presentation.R
 import com.y3.presentation.databinding.FragmentAddEditTaskBinding
+import com.y3.presentation.extensions.toast
 import com.y3.presentation.model.AddEditTaskUiState
 import com.y3.presentation.viewmodel.TasksViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -46,7 +47,7 @@ class AddEditTaskFragment : BaseBindingFragment<FragmentAddEditTaskBinding>() {
                     viewModel.taskEdit.collect {
                         when (it) {
                             is AddEditTaskUiState.Failure -> {
-
+                                toast(getString(it.text))
                             }
                             AddEditTaskUiState.Idle -> {}
                             AddEditTaskUiState.Loading -> {
@@ -83,9 +84,9 @@ class AddEditTaskFragment : BaseBindingFragment<FragmentAddEditTaskBinding>() {
     private fun setMenu() {
         binding.addTaskToolbar.toolbar.apply {
             inflateMenu(R.menu.add_edit_menu)
-            setNavigationIcon(R.drawable.ic_arrow_back)
             menu.getItem(0).setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM)
             menu.getItem(1).setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM)
+            setNavigationIcon(R.drawable.ic_arrow_back)
             setNavigationOnClickListener {
                 navigateBack()
             }

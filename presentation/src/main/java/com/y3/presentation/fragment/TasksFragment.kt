@@ -85,8 +85,12 @@ class TasksFragment : BaseBindingFragment<FragmentTasksBinding>() {
                                     binding.infoText.beVisible()
                                 }
                                 showList()
-                                tasksAdapter = TasksAdapter(it.tasks) {
-                                    toast("navigation")
+                                tasksAdapter = TasksAdapter(it.tasks) { task ->
+                                    findNavController().navigate(
+                                        TasksFragmentDirections.actionTasksFragmentToTaskFragment(
+                                            task.id
+                                        )
+                                    )
                                 }
                                 binding.tasksRv.adapter = tasksAdapter
                             }

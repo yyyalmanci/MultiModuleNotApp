@@ -59,6 +59,9 @@ dependencies {
     //loging
     implementation libs.timber
 
+    //coil
+    implementation libs.coil
+
     implementation project(':domain')
     implementation project(':common')
 }

@@ -11,6 +11,9 @@
         <action
             android:id="@+id/action_tasksFragment_to_addEditTaskFragment"
             app:destination="@id/addEditTaskFragment" />
+        <action
+            android:id="@+id/action_tasksFragment_to_taskFragment"
+            app:destination="@id/taskFragment" />
     </fragment>
 
     <fragment
@@ -30,5 +33,17 @@
         <argument
             android:name="action"
             app:argType="com.y3.presentation.model.enums.ActionType" />
+    </fragment>
+    <fragment
+        android:id="@+id/taskFragment"
+        android:name="com.y3.presentation.fragment.TaskFragment"
+        android:label="TaskFragment" >
+        <action
+            android:id="@+id/action_taskFragment_to_addEditTaskFragment"
+            app:destination="@id/addEditTaskFragment"
+            app:popUpTo="@id/tasksFragment" />
+        <argument
+            android:name="taskId"
+            app:argType="string" />
     </fragment>
 </navigation>
