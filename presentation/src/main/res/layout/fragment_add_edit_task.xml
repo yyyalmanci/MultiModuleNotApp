@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/add_task_toolbar"
+        layout="@layout/toolbar" />
+
+    <EditText
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:hint="@string/title"
+        android:imeOptions="flagNoExtractUi"
+        android:inputType="textCapSentences"
+        android:maxLines="1"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:hint="@string/description"
+        android:imeOptions="actionDone"
+        android:inputType="textMultiLine"
+        android:maxLines="2" />
+
+    <EditText
+        android:id="@+id/image_url"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:hint="@string/image_url"
+        android:imeOptions="actionDone"
+        android:inputType="textMultiLine"
+        android:maxLines="2" />
+
+</LinearLayout>
