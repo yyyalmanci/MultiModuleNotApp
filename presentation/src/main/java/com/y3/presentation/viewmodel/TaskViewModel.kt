@@ -3,11 +3,13 @@ package com.y3.presentation.viewmodel
 import androidx.lifecycle.*
 import com.y3.common.Resource
 import com.y3.domain.DeleteTaskUseCase
+import com.y3.domain.GetTaskUseCase
 import com.y3.domain.GetTasksUseCase
 import com.y3.domain.InsertTaskUseCase
 import com.y3.domain.model.TaskDomainModel
 import com.y3.presentation.R
 import com.y3.presentation.model.AddEditTaskUiState
+import com.y3.presentation.model.TaskUiState
 import com.y3.presentation.model.TasksUiState
 import com.y3.presentation.model.enums.ActionType
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -20,9 +22,10 @@ import javax.inject.Inject
 
 @HiltViewModel
 class TasksViewModel @Inject constructor(
-    private val tasksUseCase: GetTasksUseCase,
+    private val getTasksUseCase: GetTasksUseCase,
     private val deleteTaskUseCase: DeleteTaskUseCase,
-    private val insertTaskUseCase: InsertTaskUseCase
+    private val insertTaskUseCase: InsertTaskUseCase,
+    private val getTaskUseCase: GetTaskUseCase
 ) : ViewModel() {
 
     private var _tasks = MutableStateFlow<TasksUiState>(TasksUiState.Idle)
@@ -34,17 +37,35 @@ class TasksViewModel @Inject constructor(
     private var _taskDelete = MutableStateFlow<AddEditTaskUiState>(AddEditTaskUiState.Idle)
     val taskDelete = _taskDelete.asStateFlow()
 
+    private var _task = MutableStateFlow<TaskUiState>(TaskUiState.Idle)
+    val task = _task.asStateFlow()
+
     lateinit var taskModel: TaskDomainModel
 
     fun loadTask() {
         viewModelScope.launch {
             _tasks.value = TasksUiState.Loading
-            when (val resourceTasks = tasksUseCase().first()) {
+            when (val resourceTasks = getTasksUseCase().first()) {
                 is Resource.Success -> {
                     _tasks.value = TasksUiState.Success(resourceTasks.data)
                 }
                 is Resource.Failure -> {
                     Timber.d("failure", resourceTasks.throwable.message.toString())
+                }
+
+            }
+        }
+    }
+
+    fun loadTask(taskId: String) {
+        viewModelScope.launch {
+            _task.value = TaskUiState.Loading
+            when (val resourceTask = getTaskUseCase(taskId).first()) {
+                is Resource.Success -> {
+                    _task.value = TaskUiState.Success(resourceTask.data)
+                }
+                is Resource.Failure -> {
+                    Timber.d("failure", resourceTask.throwable.message.toString())
                 }
 
             }

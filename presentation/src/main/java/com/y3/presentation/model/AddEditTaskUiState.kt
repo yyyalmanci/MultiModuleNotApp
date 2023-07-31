@@ -5,7 +5,7 @@ import androidx.annotation.StringRes
 sealed class AddEditTaskUiState {
     object SuccessDelete : AddEditTaskUiState()
     object SuccessAdd : AddEditTaskUiState()
-    class Failure(@StringRes text: Int) : AddEditTaskUiState()
+    class Failure(@StringRes val text: Int) : AddEditTaskUiState()
     object Idle : AddEditTaskUiState()
     object Loading : AddEditTaskUiState()
 }
